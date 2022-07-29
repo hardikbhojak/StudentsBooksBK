@@ -24,20 +24,19 @@ exports.updateBook = async (req, res) => {
   const id = req.params.id;
   console.log(id);
   console.log(req.body);
-  const { boolname, authorname, borrowedby, borroweddate, returnbefore } =
-    req.body;
-  const data = await db("Students").where("id", "=", id).update({
-    bookname: bookname,
-    authorname: authorname,
-    borrowedby: borrowedby,
-    borroweddate: borroweddate,
-    returnbefore: returnbefore,
+  const { bookname, authorname, borroweddate, returnbefore } = req.body;
+  const data = await db("Books").where("Bookid", "=", id).update({
+    Bookname: bookname,
+    Author: authorname,
+    // Borrowedby: borrowedby,
+    Borroweddate: borroweddate,
+    Returndate: returnbefore,
   });
   return res.status(200).json({ status: true, data });
 };
 
 exports.deleteBook = async (req, res) => {
   const id = req.params.id;
-  const data = await db("Books").where("id", "=", id).del();
+  const data = await db("Books").where("Bookid", "=", id).del();
   return res.status(200).json({ status: true, data });
 };
