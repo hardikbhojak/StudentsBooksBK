@@ -11,7 +11,11 @@ exports.getBookList = async (req, res) => {
 exports.getBookDetails = async (req, res) => {
   const { id } = req.params;
   console.log(id);
-  const data = await db.select().from("Books").where("Bookid", "=", id);
+  const data = await db
+    .select()
+    .from("Books")
+    .where("Bookid", "=", id)
+    .leftJoin("Students", "Books.Borrowedby", "Students.id");
   console.log(data);
   return res.status(200).json({ status: true, data: data[0] });
 };

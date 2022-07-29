@@ -12,7 +12,7 @@ app.use("/book", bookRouter);
 app.use("/student", studentRouter);
 
 app.listen(4000, () => {
-  console.log("Welcome    to the express  app!");
+  console.log("Welcome to the express  app!");
 });
 
 // app.get("/students", (req, res) => {

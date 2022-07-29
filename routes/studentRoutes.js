@@ -9,7 +9,7 @@ const {
 
 studentRouter.get("/list", getStudList);
 studentRouter.get("/details/:id", getStudDetail);
-studentRouter.put("/details/:id", updateStudent);
+studentRouter.post("/details/:id", updateStudent);
 studentRouter.delete("/details/:id", deleteStudent);
 
 module.exports = studentRouter;

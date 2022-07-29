@@ -13,12 +13,12 @@ exports.getStudDetail = async (req, res) => {
 
 exports.updateStudent = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
-  console.log(req.body);
-  const { firstname, lastname } = req.body;
+  console.log(id, "16");
+  console.log(req.body, "17");
+  const { first, last } = req.body;
   const data = await db("Students")
     .where("id", "=", id)
-    .update({ firstname: firstname, lastname: lastname });
+    .update({ firstname: first, lastname: last });
   return res.status(200).json({ status: true, data });
 };
 
