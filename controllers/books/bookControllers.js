@@ -35,6 +35,12 @@ exports.updateBook = async (req, res) => {
   return res.status(200).json({ status: true, data });
 };
 
+exports.addBook = async (req, res) => {
+  console.log(req.body);
+  await db("books").insert(req.body);
+  return res.status(200).json({ status: true });
+};
+
 exports.deleteBook = async (req, res) => {
   const id = req.params.id;
   const data = await db("books").where("Bookid", "=", id).del();

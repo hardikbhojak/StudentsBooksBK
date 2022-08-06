@@ -27,7 +27,7 @@ exports.addStudent = async (req, res) => {
   console.log(req.body);
   await db("students").insert(req.body);
 
-  res.json({ status: "Success" });
+  res.status(200).json({ status: "Success" });
 };
 
 exports.deleteStudent = async (req, res) => {
