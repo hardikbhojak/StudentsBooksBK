@@ -3,8 +3,8 @@ const db = require("../../config/db");
 exports.getBookList = async (req, res) => {
   const data = await db
     .select()
-    .from("Books")
-    .leftJoin("Students", "Books.Borrowedby", "Students.id");
+    .from("books")
+    .leftJoin("students", "books.Borrowedby", "students.id");
   return res.status(200).json({ status: true, data });
 };
 
@@ -13,9 +13,9 @@ exports.getBookDetails = async (req, res) => {
   console.log(id);
   const data = await db
     .select()
-    .from("Books")
+    .from("books")
     .where("Bookid", "=", id)
-    .leftJoin("Students", "Books.Borrowedby", "Students.id");
+    .leftJoin("students", "books.Borrowedby", "students.id");
   console.log(data);
   return res.status(200).json({ status: true, data: data[0] });
 };
@@ -25,7 +25,7 @@ exports.updateBook = async (req, res) => {
   console.log(id);
   console.log(req.body);
   const { bookname, authorname, borroweddate, returnbefore } = req.body;
-  const data = await db("Books").where("Bookid", "=", id).update({
+  const data = await db("books").where("Bookid", "=", id).update({
     Bookname: bookname,
     Author: authorname,
     // Borrowedby: borrowedby,
@@ -37,6 +37,6 @@ exports.updateBook = async (req, res) => {
 
 exports.deleteBook = async (req, res) => {
   const id = req.params.id;
-  const data = await db("Books").where("Bookid", "=", id).del();
+  const data = await db("books").where("Bookid", "=", id).del();
   return res.status(200).json({ status: true, data });
 };

@@ -12,13 +12,5 @@ app.use("/book", bookRouter);
 app.use("/student", studentRouter);
 
 app.listen(4000, () => {
-  console.log("Welcome to the express  app!");
+  console.log("Welcome to the express app SERVER @4000!");
 });
-
-// app.get("/students", (req, res) => {
-//   console.log("students");
-//   return db
-//     .select("*")
-//     .from("Students")
-//     .then((data) => res.json(data));
-// });
